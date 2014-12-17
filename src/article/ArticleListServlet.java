@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Article;
 
-
 @WebServlet("/ArticleListServlet")
 public class ArticleListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +21,7 @@ public class ArticleListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			ServletContext sc = this.getServletContext();
-			Connection conn = (Connection) sc.getAttribute("conn");
+			Connection conn = (Connection)sc.getAttribute("conn");
 			ArticleDao dao = new ArticleDao();
 			dao.setConnection(conn);
 			

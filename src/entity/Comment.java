@@ -3,15 +3,16 @@ package entity;
 public class Comment {
 	String seq;
 	String articleSeq;
-	String name;
+	String usrSeq;
+	String usrName;
 	String contents;
 	String createDate;
 	String updateDate;
 	
-	public Comment(String name, String contents, String createDate,
+	public Comment(String usrName, String contents, String createDate,
 			String updateDate) {
 		super();
-		this.name = name;
+		this.usrName = usrName;
 		this.contents = contents;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
@@ -24,7 +25,7 @@ public class Comment {
 		return articleSeq;
 	}
 	public String getName() {
-		return name;
+		return usrName;
 	}
 	public String getContents() {
 		return contents;

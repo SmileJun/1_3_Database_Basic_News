@@ -20,11 +20,6 @@ public class Article {
 			String createDate, String updateDate) {
 		this(null, null, usrName, title, contents, createDate, updateDate, null);
 	}
-
-	public Article(String seq, String usrSeq, String usrName, String title,
-			String contents, String createDate, String updateDate) {
-		this(seq, usrSeq, usrName, title, contents, createDate, updateDate, null);
-	}
 	
 	public Article(String seq, String usrSeq, String usrName, String title,
 			String contents, String createDate, String updateDate,

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,31 +8,29 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>newsMain입니다</h1>
+	<br />
 
-<table>
-<tr>
-	<td></td>
-	<td>뉴스 제목 </td>
-	<td>뉴스 작성자 </td>
-	<td>뉴스 작성 시각 </td>
-	<td>뉴스 생성일 </td>
-	<td>최근 수정일 </td>
-</tr>
+	<table>
+		<tr>
+			<td></td>
+			<td>뉴스 번호</td>
+			<td>뉴스 제목</td>
+			<td>뉴스 생성일</td>
+		</tr>
 
-<c:forEach var="article" items="${articleList}" varStatus="status">
-<tr>
-	<td></td>
-	<td>${work.usrName} </td>
-	<td>${work.work.start} </td>
-	<td>${work.work.finish} </td>
-	<td><a href=
-  		"<c:url value="/ConfirmWorkServlet">
-  		<c:param name="workIdx" value="${status.index}"/>
-		</c:url>"> 
-  	<button>승인</button></a></td>
-</tr>
-</c:forEach>
-</table>
-
+		<c:forEach var="article" items="${articleList}" varStatus="status">
+			<tr>
+				<td></td>
+				<td>${article.seq}</td>
+				<td><a
+					href="<c:url value="/SelectArticleServlet">
+  							<c:param name="articleSeq" value="${article.seq}"/>
+						  </c:url>">${article.title}
+				</a></td>
+				<td>${article.createDate}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

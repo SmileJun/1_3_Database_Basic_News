@@ -27,7 +27,7 @@ public class ArticleDao {
 		Article article = null;
 		ArrayList<Comment> commentList = new ArrayList<Comment>();
 		
-		try {		
+		try {
 			sql = "select * from TB_ARTICLE WHERE ARTICLE_SEQ = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, intSeq);
@@ -42,7 +42,7 @@ public class ArticleDao {
 			while (rs2.next()) {
 				commentList.add(new Comment(
 						rs2.getString("COMMENT_USR_NAME"),
-						rs2.getString("COMMENT_CONTENT"),
+						rs2.getString("COMMENT_CONTENTS"),
 						rs2.getString("CREATE_DATE"),
 						rs2.getString("UPDATE_DATE")));
 			}
@@ -50,7 +50,7 @@ public class ArticleDao {
 			article = new Article(
 					rs1.getString("ARTICLE_SEQ"),
 					rs1.getString("ARTICLE_USR_SEQ"),
-					rs1.getString("ARGICLE_USR_NAME"),
+					rs1.getString("ARTICLE_USR_NAME"),
 					rs1.getString("ARTICLE_TITLE"),
 					rs1.getString("ARTICLE_CONTENTS"),
 					rs1.getString("CREATE_DATE"),
