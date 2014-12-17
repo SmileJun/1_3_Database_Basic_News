@@ -23,7 +23,7 @@ public class ArticleListServlet extends HttpServlet {
 		try {
 			ServletContext sc = this.getServletContext();
 			Connection conn = (Connection) sc.getAttribute("conn");
-			ArticleListDao dao = new ArticleListDao();
+			ArticleDao dao = new ArticleDao();
 			dao.setConnection(conn);
 			
 			ArrayList<Article> articleList = dao.getArticleList();

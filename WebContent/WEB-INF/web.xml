@@ -9,27 +9,25 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <context-param>
-  	<param-name></param-name>
-  	<param-value></param-value>
+    <param-name>driver</param-name>
+    <param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
   <context-param>
-  	<param-name></param-name>
-  	<param-value></param-value>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://localhost/studydb</param-value>
   </context-param>
   <context-param>
-  	<param-name></param-name>
-  	<param-value></param-value>
+    <param-name>username</param-name>
+    <param-value>study</param-value>
   </context-param>
   <context-param>
-  	<param-name>password</param-name>
-  	<param-value>ql1gh2qj</param-value>
+    <param-name>password</param-name>
+    <param-value>study</param-value>
   </context-param>
-  
   <servlet>
-  	<servlet-name>AppInitServlet</servlet-name>
-  	<servlet-class>common.AppInitServlet</servlet-class>
-  	<load-on-startup>1</load-on-startup>
+    <servlet-name>AppInitServlet</servlet-name>
+    <servlet-class>common.AppInitServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
 </web-app>

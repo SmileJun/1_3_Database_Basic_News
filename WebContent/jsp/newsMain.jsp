@@ -7,7 +7,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/LoginServlet">뉴스 등록</a>
-	<a href="/RegisterServlet">댓글 달기</a>
+
+<table>
+<tr>
+	<td></td>
+	<td>뉴스 제목 </td>
+	<td>뉴스 작성자 </td>
+	<td>뉴스 작성 시각 </td>
+	<td>뉴스 생성일 </td>
+	<td>최근 수정일 </td>
+</tr>
+
+<c:forEach var="article" items="${articleList}" varStatus="status">
+<tr>
+	<td></td>
+	<td>${work.usrName} </td>
+	<td>${work.work.start} </td>
+	<td>${work.work.finish} </td>
+	<td><a href=
+  		"<c:url value="/ConfirmWorkServlet">
+  		<c:param name="workIdx" value="${status.index}"/>
+		</c:url>"> 
+  	<button>승인</button></a></td>
+</tr>
+</c:forEach>
+</table>
+
 </body>
 </html>
