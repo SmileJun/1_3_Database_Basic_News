@@ -11,6 +11,12 @@
 	<h1>newsMain입니다</h1>
 	<br />
 
+	<a href="/AddArticleServlet">기사 등록하러 가기</a><br />
+	<br />
+
+	<a href="/AddCommentServlet">댓글 등록하러 가기</a><br />
+	<br />
+
 	<table>
 		<tr>
 			<td></td>

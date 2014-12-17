@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>newsMain입니다</h1>
+	<h1>news를 읽는 곳입니다</h1>
 	<a href="/jsp/index.jsp">메인으로</a>
 	<br />
 	<br /> 기사 제목 : ${article.title}

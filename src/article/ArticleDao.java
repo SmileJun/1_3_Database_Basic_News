@@ -12,22 +12,41 @@ import entity.Comment;
 public class ArticleDao {
 	Connection conn = null;
 	PreparedStatement pstmt = null;	
-	ResultSet rs1 = null;
-	ResultSet rs2 = null;
 	String sql = null;
 
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
 	
-	public Article getArticle(String seq) {
+	public int addArticle(String title, String contents) throws Exception {
+		int updatedRows = 0;
 		
+		try {		
+			sql = "insert TB_ARTICLE(ARTICLE_TITLE, ARTICLE_CONTENTS, CREATE_DATE) VALUES (?,?,NOW())";
+			pstmt = conn.prepareStatement(sql);;
+			pstmt.setString(1, title);
+			pstmt.setString(2, contents);
+			updatedRows = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			throw e;
+			
+		} finally {
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) {}				
+		}
+		return updatedRows;
+	}
+	
+	public Article getArticle(String seq) throws Exception {
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
+
 		int intSeq = Integer.parseInt(seq);
-		
 		Article article = null;
-		ArrayList<Comment> commentList = new ArrayList<Comment>();
-		
+
 		try {
+			ArrayList<Comment> commentList = new ArrayList<Comment>();
+			
 			sql = "select * from TB_ARTICLE WHERE ARTICLE_SEQ = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, intSeq);
@@ -58,38 +77,39 @@ public class ArticleDao {
 					commentList);
 			
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			
+			throw e;
+				
 		} finally {
 			if(rs1 != null) try { rs1.close(); } catch (SQLException e) {}				
+			if(rs2 != null) try { rs2.close(); } catch (SQLException e) {}				
 			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) {}				
 		}
 		
 		return article;
 	}
 	
-	public ArrayList<Article> getArticleList() {
-		
-		sql = "select ARTICLE_SEQ, ARTICLE_TITLE, CREATE_DATE from TB_ARTICLE ORDER BY CREATE_DATE DESC LIMIT 50";
+	public ArrayList<Article> getArticleList() throws Exception {
+		ResultSet rs = null;
 		
 		ArrayList<Article> articleList = new ArrayList<Article>();
 		
 		try {		
+			sql = "select ARTICLE_SEQ, ARTICLE_TITLE, CREATE_DATE from TB_ARTICLE ORDER BY CREATE_DATE DESC LIMIT 50";
 			pstmt = conn.prepareStatement(sql);;
-			rs1 = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
-			while (rs1.next()) {
+			while (rs.next()) {
 				articleList.add(new Article(
-						rs1.getString("ARTICLE_SEQ"),
-						rs1.getString("ARTICLE_TITLE"),
-						rs1.getString("CREATE_DATE")));
+						rs.getString("ARTICLE_SEQ"),
+						rs.getString("ARTICLE_TITLE"),
+						rs.getString("CREATE_DATE")));
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e.toString());
+			throw e;
 			
 		} finally {
-			if(rs1 != null) try { rs1.close(); } catch (SQLException e) {}				
+			if(rs != null) try { rs.close(); } catch (SQLException e) {}				
 			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) {}				
 		}
 		return articleList;
