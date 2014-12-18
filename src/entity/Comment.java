@@ -8,7 +8,7 @@ public class Comment {
 	String contents;
 	String createDate;
 	String updateDate;
-	
+
 	public Comment(String usrName, String contents, String createDate,
 			String updateDate) {
 		super();
@@ -17,14 +17,17 @@ public class Comment {
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 	}
-	
+
 	public String getSeq() {
 		return seq;
 	}
 	public String getArticleSeq() {
 		return articleSeq;
 	}
-	public String getName() {
+	public String getUsrSeq() {
+		return usrSeq;
+	}
+	public String getUsrName() {
 		return usrName;
 	}
 	public String getContents() {
@@ -37,5 +40,11 @@ public class Comment {
 		return updateDate;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Comment [seq=" + seq + ", articleSeq=" + articleSeq
+				+ ", usrSeq=" + usrSeq + ", usrName=" + usrName + ", contents="
+				+ contents + ", createDate=" + createDate + ", updateDate="
+				+ updateDate + "]";
+	}
 }

@@ -41,21 +41,21 @@ public class ArticleDao {
 		ResultSet rs1 = null;
 		ResultSet rs2 = null;
 
-		int intSeq = Integer.parseInt(seq);
+		int articleSeq = Integer.parseInt(seq);
 		Article article = null;
 
 		try {
 			ArrayList<Comment> commentList = new ArrayList<Comment>();
 			
-			sql = "select * from TB_ARTICLE WHERE ARTICLE_SEQ = ?";
+			sql = "select * from TB_ARTICLE WHERE ARTICLE_SEQ=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, intSeq);
+			pstmt.setInt(1, articleSeq);
 			rs1 = pstmt.executeQuery();
 			rs1.next();
 			
-			sql = "select * from TB_COMMENT WHERE COMMENT_ARTICLE_SEQ = ? ORDER BY CREATE_DATE DESC";
+			sql = "select * from TB_COMMENT WHERE COMMENT_ARTICLE_SEQ=? ORDER BY CREATE_DATE DESC";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, intSeq);
+			pstmt.setInt(1, articleSeq);
 			rs2 = pstmt.executeQuery();
 			
 			while (rs2.next()) {

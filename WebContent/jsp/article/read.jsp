@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*" %>
+<%@ page import="entity.Comment" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,14 +23,14 @@
 	<br />
 	<br /> 댓글
 	<br />
-	<c:forEach var="comment" items="${article.commentList}"
-		varStatus="status">
-	댓글 작성자 : ${comment.usrName} <br />
+	<c:forEach var="comment" items="${CommentList}">
+	============================================== <br />
 	댓글 생성일 : ${comment.createDate} <br />
 	댓글 수정일 : ${comment.updateDate} <br />
-		<br />
+	작성자 : ${comment.usrName} <br />
 	댓글 내용 <br />
 	${comment.contents} <br />
+	============================================== <br />
 	</c:forEach>
 </body>
 </html>

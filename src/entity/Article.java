@@ -10,7 +10,7 @@ public class Article {
 	String contents;
 	String createDate;
 	String updateDate;
-	ArrayList<Comment> CommentList;
+	ArrayList<Comment> CommentList = new ArrayList<Comment>();
 
 	public Article(String seq, String title, String createDate) {
 		this(seq, null, null, title, null, createDate, null, null);
@@ -58,5 +58,13 @@ public class Article {
 	}
 	public ArrayList<Comment> getCommentList() {
 		return CommentList;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [seq=" + seq + ", usrSeq=" + usrSeq + ", usrName="
+				+ usrName + ", title=" + title + ", contents=" + contents
+				+ ", createDate=" + createDate + ", updateDate=" + updateDate
+				+ ", CommentList=" + CommentList + "]";
 	}
 }
