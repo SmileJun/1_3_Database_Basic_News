@@ -34,9 +34,6 @@ public class SelectArticleServlet extends HttpServlet {
 			request.setAttribute("CommentList", CommentList);
 			response.setContentType("text/html; charset=UTF-8");
 			
-			System.out.println("article : " + article);
-			System.out.println("commentList : " + CommentList);
-
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/article/read.jsp");
 			rd.forward(request, response);	
 			
