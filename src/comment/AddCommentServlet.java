@@ -78,7 +78,7 @@ public class AddCommentServlet extends HttpServlet {
 		
 			request.setAttribute("error", e);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/error.jsp");
 			rd.forward(request, response);
 		}
 	}	

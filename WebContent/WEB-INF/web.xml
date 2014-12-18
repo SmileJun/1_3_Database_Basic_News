@@ -19,7 +19,7 @@
   </context-param>
   <context-param>
     <param-name>username</param-name>
-    <param-value>study</param-value>
+    <param-value>smdkfs</param-value>
   </context-param>
   <context-param>
     <param-name>password</param-name>
